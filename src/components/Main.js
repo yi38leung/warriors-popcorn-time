@@ -1,32 +1,18 @@
+import { useState } from "react";
+import Movie from "./Movie";
+
 import "./Main.css";
 
-function Main() {
-  const moviesArray = [
-    {
-      id: 1,
-      title: "The Godfather",
-      rating: 9,
-    },
-    {
-      id: 2,
-      title: "Forrest Gump",
-      rating: 9,
-    },
-    {
-      id: 3,
-      title: "Gladiator",
-      rating: 8,
-    },
-  ];
-
+function Main(props) {
   return (
     <div className="Main">
-      {moviesArray.map((movieObj) => {
+      {props.moviesArr.map((movieObj, index) => {
         return (
-          <div key={movieObj.id} className="card">
-            <p>{movieObj.title}</p>
-            <p>Rating: {movieObj.rating}</p>
-          </div>
+          <Movie
+            key={index}
+            movieDetails={movieObj}
+            callbackToDelete={props.callbackToDelete}
+          />
         );
       })}
     </div>
